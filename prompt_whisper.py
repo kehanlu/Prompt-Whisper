@@ -149,7 +149,7 @@ def main(args):
 
     generate_options["prompt_ids"] = generate_options["prompt_ids"].tolist() if prompt is not None else None
     json.dump(
-        {"MER": word_error_rate, "generate_options": generate_options,"results": results},open(f"{args.output_dir}/{args.exp_name}.json", "w"), indent=2, ensure_ascii=False
+        {"model_name_or_path": model_name_or_path, "MER": word_error_rate, "generate_options": generate_options,"results": results},open(f"{args.output_dir}/{args.exp_name}.json", "w"), indent=2, ensure_ascii=False
     )
     print(f"Output file: {args.output_dir}/{args.exp_name}.json")
 

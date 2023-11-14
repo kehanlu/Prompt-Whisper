@@ -1,4 +1,4 @@
-# DLHLP-Prompt-Whisper
+# Prompt-Whisper
 
 ## Setup
 
@@ -8,8 +8,11 @@ conda create --prefix conda/whisper python=3.10
 pip install openai-whisper datasets transformers librosa soundfile opencc-python-reimplemented jiwer
 ```
 
-## Inference
-- `--model_name_or_path`, `-m`: This parameter allows you to specify the Whisper model you want to use. For example, you can use models like openai/whisper-large-v3 or openai/whisper-base.
+## Prompt Whisper
+
+We random sample 3000 utterances from [chiyuanhsiao/ML2021_HungyiLee_Corpus](https://huggingface.co/datasets/chiyuanhsiao/ML2021_HungyiLee_Corpus) in this script.
+
+- `--model_name_or_path`, `-m`: This parameter allows you to specify the Whisper model you want to use. For example, you can use models like `openai/whisper-large-v3` or `openai/whisper-base`.
 
 
 - Generation Options: You have the flexibility to customize the generation process using several options. Refer to the [transformers.WhisperForConditionalGeneration.generate](https://huggingface.co/docs/transformers/v4.35.0/en/model_doc/whisper#transformers.WhisperForConditionalGeneration) function for more details. These options include:
