@@ -1,5 +1,15 @@
 # Prompt-Whisper
 
+Assignment 6 for the Deep Learning for Human Language Processing (DLHLP) course at National Taiwan University, 2023 Fall.
+
+## Objective
+
+- Utilize Whisper for Chinese-English code-switched speech recognition.
+
+- Enhance Whisper's recognition accuracy by utilizing additional language ID, task tag, prompts, etc.
+
+- For instance, prompts could include hints about common errors made by the model or domain knowledge related to the speech content.
+
 ## Setup
 
 ```sh
@@ -10,10 +20,17 @@ pip install openai-whisper datasets transformers librosa soundfile opencc-python
 
 ## Prompt Whisper
 
-We random sample 3000 utterances from [chiyuanhsiao/ML2021_HungyiLee_Corpus](https://huggingface.co/datasets/chiyuanhsiao/ML2021_HungyiLee_Corpus) in this script.
+We have selected the first six videos from [chiyuanhsiao/ML2021_HungyiLee_Corpus](https://huggingface.co/datasets/chiyuanhsiao/ML2021_HungyiLee_Corpus) as our test data in this script.
 
 - `--model_name_or_path`, `-m`: This parameter allows you to specify the Whisper model you want to use. For example, you can use models like `openai/whisper-large-v3` or `openai/whisper-base`.
 
+- `--dataset_path`, `-d`: Specify the dataset path (name).
+
+- `--device`, `-v`: Specify the device. For instance, cuda or cpu.
+
+- `--cache_dir`, `-s`: Specify the cache directory you want to save your dataset.
+
+- `--batch_size`, `-b`: Specify the batch size.
 
 - Generation Options: You have the flexibility to customize the generation process using several options. Refer to the [transformers.WhisperForConditionalGeneration.generate](https://huggingface.co/docs/transformers/v4.35.0/en/model_doc/whisper#transformers.WhisperForConditionalGeneration) function for more details. These options include:
     - `--task`, `-t`: Specify the task you want the model to perform, which can be either `transcribe` or `translate`.
@@ -25,13 +42,13 @@ We random sample 3000 utterances from [chiyuanhsiao/ML2021_HungyiLee_Corpus](htt
 ```sh
 python prompt_whisper.py -t transcribe -l zh -m "openai/whisper-base"
 
-python prompt_whisper.py -t transcribe -l zh -p "我喜歡機器學習"
+python prompt_whisper.py -t transcribe -l zh -p "太強了Whisper"
 
 python prompt_whisper.py -p "真是太厲害了"
 
 python prompt_whisper.py -c "<|en|><|zh|><|transcribe|><|notimestamps|>"
 
-python prompt_whisper.py -t transcribe -l zh -c "<|en|><|zh|><|transcribe|><|notimestamps|>" -p "這是一個機器學習的例子" 
+python prompt_whisper.py -t transcribe -l zh -c "<|en|><|zh|><|transcribe|><|notimestamps|>" -p "加油吧, Whisper" 
 ```
 
 ### Error Rate
@@ -64,3 +81,34 @@ Example:
 ```
 
 `raw_prediction` represents the original output sequence from whisper.
+
+### Dataset
+- Chinese-English code-switch dataset.
+
+- Machine learning class recordings.
+    - video list:
+    ``` python
+    https://docs.google.com/spreadsheets/d/1VltMnEGAR8Q3Oq9WmdA_a0jrjUNEdi1ja9noQIVvCBo/edit?usp=sharing
+    ```
+
+- Hugging Face Dataset Name: 
+
+    ``` python
+    chiyuanhsiao/ML2021_HungyiLee_Corpu
+    ```
+
+- Hugging Face Dataset Link: 
+
+    ``` python
+    https://huggingface.co/datasets/chiyuanhsiao/ML2021_HungyiLee_Corpus
+    ```
+
+## References
+- Robust Speech Recognition via Large-Scale Weak Supervision 
+    - https://arxiv.org/abs/2212.04356
+
+- Prompting the Hidden Talent of Web-Scale Speech Models for Zero-Shot Task Generalization
+    - https://arxiv.org/abs/2305.11095
+
+- Zero-shot Domain-sensitive Speech Recognition with Prompt-conditioning Fine-tuning
+    - https://arxiv.org/abs/2307.10274
