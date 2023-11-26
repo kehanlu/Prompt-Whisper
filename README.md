@@ -1,6 +1,13 @@
 # Prompt-Whisper
 
-Assignment 6 for the Deep Learning for Human Language Processing (DLHLP) course at National Taiwan University, 2023 Fall.
+This repository aims to improve the accuracy of ASR (Automatic Speech Recognition) in specialized tasks utilizing Whisper, such as code-switching in datasets, through well-crafted prompts.
+
+It can be applied to:
+* Assignment 6 in the Deep Learning for Human Language Processing (DLHLP) course at National Taiwan University, Fall 2023.
+
+* Assignment 7 in the Deep Learning for Human Language Processing (DLHLP) course at National Taiwan University, Fall 2023. However, this requires addressing issues related to overly long input speech. Strategies such as dividing the speech into 30-second segments may be employed.
+
+* Any task where you believe adding prompts could enhance the performance of Whisper.
 
 ## Objective
 
