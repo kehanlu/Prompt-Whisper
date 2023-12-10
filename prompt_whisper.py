@@ -65,7 +65,7 @@ def calculate_MER(results):
             "raw_prediction": result["prediction"],
         })
 
-    return new_results, wer(hyps, refs)
+    return new_results, wer(refs, hyps)
 
 
 def main(args):
